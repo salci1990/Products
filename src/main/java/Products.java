@@ -4,10 +4,10 @@ public class Products {
 
     private String product_name;
     private String code;
-    private int price;
+    private double price;
     private String term_of_validity;
 
-    public Products(String product_name, String code, int price, String term_of_validity) {
+    public Products(String product_name, String code, double price, String term_of_validity) {
         this.product_name = product_name;
         this.code = code;
         this.price = price;
@@ -30,11 +30,11 @@ public class Products {
         this.code = code;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
