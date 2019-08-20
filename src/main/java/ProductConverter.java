@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,5 +30,9 @@ public class ProductConverter {
             productsList.add(new Product(splitList[0], splitList[1], value, splitList[3]));
         }
         return productsList;
+    }
+
+    public static LocalDate dataFormatter(String date) {
+        return LocalDate.parse(date);
     }
 }

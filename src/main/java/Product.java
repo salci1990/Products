@@ -1,4 +1,5 @@
-import java.util.Date;
+
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Product {
@@ -6,13 +7,13 @@ public class Product {
     private String productName;
     private String code;
     private double price = 0.0;
-    private Date termOfValidity;
+    private LocalDate termOfValidity;
 
-    public Product(String productName, String code, double price, Date termOfValidity) {
+    public Product(String productName, String code, double price, String termOfValidity) {
         this.productName = productName;
         this.code = code;
         this.price = price;
-        this.termOfValidity = termOfValidity;
+        this.termOfValidity = ProductConverter.dataFormatter(termOfValidity);
     }
 
     public String getProductName() {
@@ -39,11 +40,11 @@ public class Product {
         this.price = price;
     }
 
-    public Date getTermOfValidity() {
+    public LocalDate getTermOfValidity() {
         return termOfValidity;
     }
 
-    public void setTermOfValidity(Date termOfValidity) {
+    public void setTermOfValidity(LocalDate termOfValidity) {
         this.termOfValidity = termOfValidity;
     }
 

@@ -26,7 +26,7 @@ public class ProductTest {
     @Test
     public void firstObjectFromListWithAllValuesTest() throws FileNotFoundException {
         List<Product> products = ProductConverter.converter(ProductConverter.PATH);
-        Assertions.assertEquals(products.get(1).toString(), ("Product{productName='Desperados', code='92837', price=4.99, termOfValidity='24-07-2019'}"));
+        Assertions.assertEquals(products.get(1).toString(), ("Product{productName='Desperados', code='92837', price=4.99, termOfValidity='2019-07-24'}"));
     }
 
     @Test
@@ -76,5 +76,11 @@ public class ProductTest {
     public void checkCodeWithoutValueTest() throws FileNotFoundException {
         List<Product> products = ProductConverter.converter(fileMissingNameAndCode);
         Assertions.assertEquals(products.get(0).getCode(), "");
+    }
+
+    @Test
+    public void checkTermOfValidityIfDataIsTheseSame()throws FileNotFoundException {
+        List<Product> products = ProductConverter.converter(fileWrongValuePrice);
+        Assertions.assertEquals("2014-02-19", products.get(0).getTermOfValidity().toString());
     }
 }
