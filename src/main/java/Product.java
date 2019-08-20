@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Objects;
 
 public class Product {
@@ -5,9 +6,9 @@ public class Product {
     private String productName;
     private String code;
     private double price = 0.0;
-    private String termOfValidity;
+    private Date termOfValidity;
 
-    public Product(String productName, String code, double price, String termOfValidity) {
+    public Product(String productName, String code, double price, Date termOfValidity) {
         this.productName = productName;
         this.code = code;
         this.price = price;
@@ -38,12 +39,12 @@ public class Product {
         this.price = price;
     }
 
-    public String getTermOfValidity() {
+    public Date getTermOfValidity() {
         return termOfValidity;
     }
 
-    public void setTermOfValidity(String term_of_validity) {
-        this.termOfValidity = term_of_validity;
+    public void setTermOfValidity(Date termOfValidity) {
+        this.termOfValidity = termOfValidity;
     }
 
     @Override
