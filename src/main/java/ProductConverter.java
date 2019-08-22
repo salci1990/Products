@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -33,6 +32,7 @@ public class ProductConverter {
     }
 
     public static LocalDate dataFormatter(String date) {
+
         return LocalDate.parse(date);
     }
 }

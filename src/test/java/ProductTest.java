@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class ProductTest {
@@ -12,6 +13,9 @@ public class ProductTest {
     String fileMissingNameAndCode = "/home/whysoserious/Desktop/Products/products1.txt";
     String fileWrongValuePrice = "/home/whysoserious/Desktop/Products/products2.txt";
     String fileMissingPrice = "/home/whysoserious/Desktop/Products/products3.txt";
+    String fileWrongData = "/home/whysoserious/Desktop/Products/products3.txt";
+    String fileWithWrongCharactersInData = "/home/whysoserious/Desktop/Products/fileWithWrongCharactersInData";
+    String fileWithWrongDataFormat = "/home/whysoserious/Desktop/Products/fileWithWrongDataFormat";
 
     @Test
     public void isFileExists() {
@@ -82,5 +86,26 @@ public class ProductTest {
     public void checkTermOfValidityIfDataIsTheseSame()throws FileNotFoundException {
         List<Product> products = ProductConverter.converter(fileWrongValuePrice);
         Assertions.assertEquals("2014-02-19", products.get(0).getTermOfValidity().toString());
+    }
+
+    @Test
+    public void termOfVadilityShouldNotHaveValue() throws FileNotFoundException {
+            Assertions.assertThrows(NumberFormatException.class, () -> {
+                List<Product> products = ProductConverter.converter(fileWrongData);
+            });
+    }
+
+    @Test
+    public void termOfVadilityShouldHaveWrongCharactersFormat() throws FileNotFoundException {
+        Assertions.assertThrows(DateTimeParseException.class, () -> {
+            List<Product> products = ProductConverter.converter(fileWithWrongCharactersInData);
+        });
+    }
+
+    @Test
+    public void termOfVadilityShouldHaveCorrectDataValue() throws FileNotFoundException {
+        Assertions.assertThrows(DateTimeParseException.class, () -> {
+            List<Product> products = ProductConverter.converter(fileWithWrongDataFormat);
+        });
     }
 }
